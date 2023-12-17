@@ -1,0 +1,53 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(60, 13, 76);
+}
+
+.header {
+    height: 10rem;
+    border: white solid 2px;
+    border-radius: 10px;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.title {
+    color: white;
+}
+
+.content-container {
+    display: flex;
+}
+
+.cards-div-container {
+    width: 80%;
+    border: white solid 2px;
+    height: 60rem;
+    margin: 8px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.navbar {
+    width: 20%;
+    height: 60rem;
+    border: white solid 2px;
+    margin: 8px;
+    border-radius: 10px;
+}
+
+
+.card {
+    width: 8rem;
+    height: 12rem;
+    background-color: black;
+    border: 2px solid white;
+}
