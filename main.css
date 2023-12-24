@@ -22,6 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 
@@ -42,11 +43,15 @@ body {
     /* margin: 8px; */
     border-radius: 10px;
     display: grid;
-    grid-template-columns: repeat(10, 200px);
+    grid-template-columns: repeat(10, 140px);
     gap: 8px;
     justify-content: center;
 
 }
+
+
+
+
 
 
 .card {
@@ -96,6 +101,8 @@ body {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    position: absolute;
+
 }
 
 .dropbtn:hover,
