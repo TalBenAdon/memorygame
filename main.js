@@ -19,7 +19,7 @@ const backOfCards = ["images/Spirit_Blossom_LoR_Card_Back.webp"]
 
 const difficultyList = ["Easy", "Medium", "Hard"]
 
-let MATCHES = 3
+let MATCHES = 2
 let shuffledList
 function shuffle(listToShuffle) {
     let currentIndex = listToShuffle.length, randomIndex;
@@ -47,10 +47,12 @@ function handleDifficultySelector(difficulty) {
         case "Easy":
             selectedCards = cardsImageValues.slice(0, 5)
             boardElement.classList.add('easy-mode')
+            MATCHES = 2
             break;
         case "Medium":
             selectedCards = cardsImageValues.slice(0, 10)
             boardElement.classList.add('hard-mode')
+            MATCHES = 2
             break;
         case "Hard":
             selectedCards = cardsImageValues.slice(0, 10)
@@ -121,7 +123,7 @@ function resetBoard() {
     let correctCards = [];
     let doubledEmojiList = []
     if (difficultySelector.value === "Hard") {
-
+        MATCHES = 3
         for (card of selectedCards) {
             for (let i = 0; i < MATCHES; i++) {
                 doubledEmojiList.push(card)
@@ -207,56 +209,6 @@ function resetBoard() {
 let isAbleToFlip = true
 
 function init() {
-
-    const difficultySelectorEasy = document.getElementById('Easy')
-    difficultySelectorEasy.onselect = (e) => {
-        handleDifficultySelector(e.target.id);
-    }
-    const difficultySelectorMedium = document.getElementById('Medium')
-    difficultySelectorMedium.onchange = (e) => {
-        console.log(difficultySelectorMedium);
-        handleDifficultySelector(e.target.id);
-    }
-    const difficultySelectorHard = document.getElementById('Hard')
-    difficultySelectorHard.onclick = (e) => {
-        handleDifficultySelector(e.target.id);
-    }
-
-
-
-
-    const headerElement = document.getElementById("header")
-
-    const buttonContainerElement = document.createElement("div")
-    buttonContainerElement.className = "dropdown"
-    headerElement.appendChild(buttonContainerElement)
-
-    const mainDropDownButtonElement = document.createElement("button")
-    mainDropDownButtonElement.onclick = (e) => { showDropDown() }
-    mainDropDownButtonElement.className = "dropbtn"
-    mainDropDownButtonElement.innerHTML = "Easy"
-    buttonContainerElement.appendChild(mainDropDownButtonElement)
-
-    const dropDownContentContainer = document.createElement("div")
-    dropDownContentContainer.className = "dropdown-content"
-    dropDownContentContainer.id = "myDropdown"
-    buttonContainerElement.appendChild(dropDownContentContainer)
-
-    for (let i = 0; i < difficultyList.length; i++) {
-        const buttonElement = document.createElement("button")
-
-        buttonElement.id = difficultyList[i]
-        buttonElement.innerHTML = difficultyList[i]
-        buttonElement.onclick = (e) => {
-            handleDifficultySelector(e.target.id);
-            mainDropDownButtonElement.innerHTML = (e.target.innerHTML)
-
-        }
-        dropDownContentContainer.appendChild(buttonElement)
-
-    }
-
-
 
     handleDifficultySelector("Easy")
 
