@@ -42,12 +42,24 @@ body {
     /* margin: 8px; */
     border-radius: 10px;
     display: grid;
-    grid-template-columns: repeat(10, 200px);
+
     gap: 8px;
     justify-content: center;
+    padding: 48px;
 
 }
 
+.hard-mode {
+    grid-template-columns: repeat(10, minmax(100px, 200px));
+}
+
+.easy-mode {
+    grid-template-columns: repeat(5, minmax(100px, 200px));
+}
+
+.difficulty-selector {
+    padding: 20px;
+}
 
 .card {
     /* width: 22.5rem; */

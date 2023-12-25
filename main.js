@@ -19,7 +19,7 @@ const backOfCards = ["images/Spirit_Blossom_LoR_Card_Back.webp"]
 
 const difficultyList = ["Easy", "Medium", "Hard"]
 
-const MATCHES = 2
+let MATCHES = 3
 let shuffledList
 function shuffle(listToShuffle) {
     let currentIndex = listToShuffle.length, randomIndex;
@@ -36,25 +36,37 @@ function shuffle(listToShuffle) {
 }
 
 
+const difficultySelector = document.getElementById('difficultySelector')
 function handleDifficultySelector(difficulty) {
+    const currentDifficulty = difficultySelector.value
 
-    switch (difficulty) {
+    const boardElement = document.getElementById("cards-div-container");
+    boardElement.classList.remove('easy-mode')
+    boardElement.classList.remove('hard-mode')
+    switch (currentDifficulty) {
         case "Easy":
             selectedCards = cardsImageValues.slice(0, 5)
+            boardElement.classList.add('easy-mode')
             break;
         case "Medium":
             selectedCards = cardsImageValues.slice(0, 10)
+            boardElement.classList.add('hard-mode')
             break;
         case "Hard":
-            selectedCards = cardsImageValues.slice(0, 15)
+            selectedCards = cardsImageValues.slice(0, 10)
+            boardElement.classList.add('hard-mode')
             break;
-
         default:
             selectedCards = cardsImageValues.slice(0, 5)
+            boardElement.classList.add('easy-mode')
             break;
     }
     resetBoard()
 }
+
+
+
+
 
 function flipBackCards(flippedCards) {
 
@@ -91,13 +103,36 @@ function flipBackCard(card) {
     }, 500);
 }
 
+function setNumberOfMatches(selectedCards) {
+    const doubledEmojiList = []
+    for (card of selectedCards) {
+        for (let i = 0; i < MATCHES; i++) {
+            doubledEmojiList.push(card)
+        }
+    }
+}
+
 function resetBoard() {
     const boardElement = document.getElementById("cards-div-container");
     boardElement.innerHTML = ""; // Clear the existing board
 
+
     let flippedCards = [];
     let correctCards = [];
-    const doubledEmojiList = selectedCards.concat(selectedCards);
+    let doubledEmojiList = []
+    if (difficultySelector.value === "Hard") {
+
+        for (card of selectedCards) {
+            for (let i = 0; i < MATCHES; i++) {
+                doubledEmojiList.push(card)
+            }
+        }
+    } else {
+
+        doubledEmojiList = selectedCards.concat(selectedCards);
+    }
+
+
     shuffle(doubledEmojiList);
 
     shuffledList.forEach((cardValue, i) => {
@@ -122,8 +157,11 @@ function resetBoard() {
                     isAbleToFlip = false
                     setTimeout(() => {
                         flipBackCards(flippedCards)
-                        flipBackCard(flippedCards[0])
-                        flipBackCard(flippedCards[1])
+                        for (let i = 0; i < flippedCards.length; i++) {
+                            flipBackCard(flippedCards[i])
+                        }
+                        // flipBackCard(flippedCards[0])
+                        // flipBackCard(flippedCards[1])
                         flippedCards = []
                         isAbleToFlip = true
                     }, 500)
@@ -169,6 +207,23 @@ function resetBoard() {
 let isAbleToFlip = true
 
 function init() {
+
+    const difficultySelectorEasy = document.getElementById('Easy')
+    difficultySelectorEasy.onselect = (e) => {
+        handleDifficultySelector(e.target.id);
+    }
+    const difficultySelectorMedium = document.getElementById('Medium')
+    difficultySelectorMedium.onchange = (e) => {
+        console.log(difficultySelectorMedium);
+        handleDifficultySelector(e.target.id);
+    }
+    const difficultySelectorHard = document.getElementById('Hard')
+    difficultySelectorHard.onclick = (e) => {
+        handleDifficultySelector(e.target.id);
+    }
+
+
+
 
     const headerElement = document.getElementById("header")
 
