@@ -22,6 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 
@@ -42,7 +43,6 @@ body {
     /* margin: 8px; */
     border-radius: 10px;
     display: grid;
-
     gap: 8px;
     justify-content: center;
     padding: 48px;
@@ -60,6 +60,10 @@ body {
 .difficulty-selector {
     padding: 20px;
 }
+
+
+
+
 
 .card {
     /* width: 22.5rem; */
@@ -108,6 +112,8 @@ body {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    position: absolute;
+
 }
 
 .dropbtn:hover,
