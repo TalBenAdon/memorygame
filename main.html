@@ -12,13 +12,31 @@
 
 
     <div class="header" id="header">
+
         <div class="left-side">
-            <select onchange="handleDifficultySelector()" name="" id="difficultySelector" class="difficulty-selector">
-                <option value="Easy" id="Easy">Easy</option>
-                <option value="Medium" id="Medium">Medium</option>
-                <option value="Hard" id="Hard">Hard</option>
-            </select>
+            <label class="matching-number-title" for="">Matching Number
+                <span class="separating-line-horizontal"> </span>
+                <select onchange="handleMatchingSelector()" name="" id="matchNumberSelector"
+                    class="match-number-selector">
+
+                    <option value="2" id="2">2</option>
+                    <option value="3" id="3">3</option>
+                    <option value="4" id="4">4</option>
+                </select>
+            </label>
+
+            <label class="matching-number-title" for="">Difficulty
+                <span class="separating-line-horizontal"> </span>
+                <select onchange="handleDifficultySelector()" name="" id="difficultySelector"
+                    class="difficulty-selector">
+                    <option value="Easy" id="Easy">Easy</option>
+                    <option value="Medium" id="Medium">Medium</option>
+                    <option value="Hard" id="Hard">Hard</option>
+                </select>
+            </label>
+
         </div>
+
         <div>
             <img class="logo" src="images/Legends_of_Runeterra_logo.png" alt="Legends of Runeterra logo">
             <div class="separating-line"></div>

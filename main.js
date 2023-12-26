@@ -43,6 +43,7 @@ function handleDifficultySelector(difficulty) {
     const boardElement = document.getElementById("cards-div-container");
     boardElement.classList.remove('easy-mode')
     boardElement.classList.remove('hard-mode')
+
     switch (currentDifficulty) {
         case "Easy":
             selectedCards = cardsImageValues.slice(0, 5)
@@ -66,8 +67,12 @@ function handleDifficultySelector(difficulty) {
     resetBoard()
 }
 
+const matchingSelector = document.getElementById('matchNumberSelector')
 
-
+function handleMatchingSelector() {
+    const currentMatchingNumber = matchingSelector.value
+    return MATCHES = Number(currentMatchingNumber)
+}
 
 
 function flipBackCards(flippedCards) {
@@ -79,24 +84,8 @@ function flipBackCards(flippedCards) {
 
 }
 
-function showDropDown() {
-    document.getElementById("myDropdown").classList.toggle("show")
-}
 
-window.onclick = function (event) {
-    if (!event.target.matches('.dropbtn')) {
-        let dropdowns = document.getElementsByClassName("dropdown-content")
-        let i
 
-        for (let i = 0; i < dropdowns.length; i++) {
-            let openDropdown = dropdowns[i]
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show')
-            }
-
-        }
-    }
-}
 function flipBackCard(card) {
     card.classList.remove('flipped');
     card.classList.add('flipping-back');
@@ -107,6 +96,7 @@ function flipBackCard(card) {
 
 function setNumberOfMatches(selectedCards) {
     const doubledEmojiList = []
+
     for (card of selectedCards) {
         for (let i = 0; i < MATCHES; i++) {
             doubledEmojiList.push(card)
@@ -124,6 +114,9 @@ function resetBoard() {
     let doubledEmojiList = []
     if (difficultySelector.value === "Hard") {
         MATCHES = 3
+
+
+
         for (card of selectedCards) {
             for (let i = 0; i < MATCHES; i++) {
                 doubledEmojiList.push(card)
